@@ -1,5 +1,6 @@
 package com.example.demo.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,10 +10,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.RequestDto;
+import com.example.demo.services.UserService;
 
 @RestController
 @RequestMapping(value = "/v1")
 public class SajibController {
+	//@Autowired
+	private UserService userService;
+
+	public SajibController(@Autowired 
+			UserService userService) {
+		super();
+		this.userService = userService;
+	}
 
 	@GetMapping(value = "/welcomeToSpring")
 	public String welcomeToSpring() {
@@ -27,7 +37,7 @@ public class SajibController {
 	 * }
 	 */
 	@GetMapping(value = "/addition")
-	public int addition(@RequestParam(value = "a") int a, @RequestParam(value = "b",required=false) int b) {
+	public int addition(@RequestParam(value = "a") int a, @RequestParam(value = "b", required = false) int b) {
 		return a + b;
 
 	}
@@ -40,17 +50,7 @@ public class SajibController {
 
 	@PostMapping(value = "/login")
 	public String login(@Validated @RequestBody RequestDto dto) {
-		
-		String userName = dto.getUserName();
-		String password = dto.getPassword();
-	
-		if ((userName).equals("Sajib") && password.equals("admin")) {
-			return"Login Successful";
-		}
-		else {
-				
-			return"Login Error";	
-			}
-		}
+		return userService.login(dto);
+	}
 
 }
