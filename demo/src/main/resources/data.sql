@@ -1,12 +1,60 @@
-create table users(
- id int  PRIMARY KEY,
- userName  varchar (50),
- password   varchar (50)
- 
 
- 
+insert into users
+(
+
+   userName,
+   password
 )
+values
+(
 
-;
-insert into users(id,userName,password) values(133,'Sajib','admin')
-;
+   'Sajib',
+   'admin'
+);
+insert into users
+(
+ 
+   userName,
+   password
+)
+values
+(
+   'Tajib',
+   'admin'
+);
+insert into users
+(
+ 
+   userName,
+   password
+)
+values
+(
+
+   'Uajib',
+   'admin'
+);
+insert into users
+(
+ 
+   userName,
+   password
+)
+values
+(
+
+   'Vajib',
+   'admin'
+);
+insert into users
+(
+ 
+   userName,
+   password
+)
+values
+(
+
+   'Wajib',
+   'admin'
+);
